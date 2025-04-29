@@ -1,0 +1,19 @@
+mat-card {
+    transition: transform 0.2s;
+    &:hover {
+      transform: translateY(-5px);
+    }
+  }
+  
+  .card-highlight {
+    background-color: #e8eaf6;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  li {
+    padding: 0.25rem 0;
+  }

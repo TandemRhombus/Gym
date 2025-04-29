@@ -1,5 +1,6 @@
 import { bootstrapApplication } from '@angular/platform-browser';
 import { provideRouter, Routes } from '@angular/router';
+import { provideHttpClient } from '@angular/common/http'; // CORRECTO para standalone
 import { provideAnimations } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app/app.component';
@@ -27,6 +28,7 @@ const routes: Routes = [
 bootstrapApplication(AppComponent, {
   providers: [
     provideAnimations(),
-    provideRouter(routes)
+    provideRouter(routes),
+    provideHttpClient() // Aquí se agrega HttpClientModule correctamente para standalone
   ]
 }).catch(err => console.error(err));

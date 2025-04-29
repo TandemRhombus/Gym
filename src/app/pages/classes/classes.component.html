@@ -1,1 +1,15 @@
-<p>classes works!</p>
+<h1>Clases Disponibles</h1>
+<mat-divider></mat-divider>
+
+<mat-grid-list cols="3" rowHeight="1:1" gutterSize="16px">
+  @for (c of classes; track c.id) {
+    <mat-grid-tile>
+      <app-class-card
+        [gymClass]="c"
+        (enroll)="onEnroll($event)">
+      </app-class-card>
+    </mat-grid-tile>
+  } @empty {
+    <p class="empty">No hay clases disponibles en este momento.</p>
+  }
+</mat-grid-list>

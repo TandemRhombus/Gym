@@ -4,31 +4,34 @@
       <p>Tu plataforma para gestionar clases y horarios de gimnasio de forma fácil y rápida.</p>
       <button mat-raised-button color="primary" routerLink="/classes">Ver Clases</button>
     </div>
-</section>
+  </section>
   
-<mat-divider></mat-divider>
+  <mat-divider></mat-divider>
   
-<section class="features">
+  <section class="features">
     <h2>Nuestras Categorías</h2>
     <mat-grid-list cols="3" rowHeight="1:1" gutterSize="16px">
-    <mat-grid-tile *ngFor="let feature of features">
-        <mat-card>
-          <mat-card-header>
-            <mat-card-title>{{ feature.name }}</mat-card-title>
-          </mat-card-header>
-          <img mat-card-image [src]="feature.image" alt="{{ feature.name }}">
-          <mat-card-content>
-            <p>{{ feature.description }}</p>
-          </mat-card-content>
-        </mat-card>
-      </mat-grid-tile>
+      @for (feature of features; track feature.name) {
+        <mat-grid-tile>
+          <mat-card>
+            <mat-card-header>
+              <mat-card-title>{{ feature.name }}</mat-card-title>
+            </mat-card-header>
+            <img mat-card-image [src]="feature.image" alt="{{ feature.name }}">
+            <mat-card-content>
+              <p>{{ feature.description }}</p>
+            </mat-card-content>
+          </mat-card>
+        </mat-grid-tile>
+      }
     </mat-grid-list>
-</section>
+  </section>
   
-<mat-divider></mat-divider>
+  <mat-divider></mat-divider>
   
-<section class="cta">
+  <section class="cta">
     <h2>Únete Hoy</h2>
     <p>Regístrate y comienza tu rutina con nosotros.</p>
     <button mat-stroked-button color="accent" routerLink="/contact">Contáctanos</button>
-</section>
+  </section>
+  
