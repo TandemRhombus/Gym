@@ -1,0 +1,27 @@
+.hero {
+    background: url('assets/images/hero-gym.jpg') center/cover no-repeat;
+    color: white;
+    text-align: center;
+    padding: 4rem 1rem;
+  }
+  .hero-content {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .features {
+    padding: 2rem 1rem;
+    text-align: center;
+  }
+  .features h2 {
+    margin-bottom: 1rem;
+  }
+  
+.cta {
+    background-color: #f5f5f5;
+    padding: 2rem 1rem;
+    text-align: center;
+}
+.cta h2 {
+    margin-bottom: 0.5rem;
+}

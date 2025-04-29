@@ -1,6 +1,32 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import { appConfig } from './app/app.config';
-import { AppComponent } from './app/app.component';
+import { provideRouter, Routes } from '@angular/router';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
-bootstrapApplication(AppComponent, appConfig)
-  .catch((err) => console.error(err));
+import { AppComponent } from './app/app.component';
+import { HomeComponent } from './app/pages/home/home.component';
+import { ClassesComponent } from './app/pages/classes/classes.component';
+import { ClassDetailComponent } from './app/pages/class-detail/class-detail.component';
+import { ScheduleComponent } from './app/pages/schedule/schedule.component';
+import { ContactComponent } from './app/pages/contact/contact.component';
+import { LoginComponent } from './app/auth/login/login.component';
+import { TemplateFormComponent } from './app/forms/template-form/template-form.component';
+import { ReactiveFormComponent } from './app/forms/reactive-form/reactive-form.component';
+
+const routes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'classes', component: ClassesComponent },
+  { path: 'classes/:id', component: ClassDetailComponent },
+  { path: 'schedule', component: ScheduleComponent },
+  { path: 'contact', component: ContactComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'template-form', component: TemplateFormComponent },
+  { path: 'reactive-form', component: ReactiveFormComponent },
+  { path: '**', redirectTo: '' }
+];
+
+bootstrapApplication(AppComponent, {
+  providers: [
+    provideAnimations(),
+    provideRouter(routes)
+  ]
+}).catch(err => console.error(err));

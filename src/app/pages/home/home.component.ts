@@ -1,0 +1,41 @@
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatDividerModule } from '@angular/material/divider';
+
+@Component({
+  selector: 'app-home',
+  standalone: true,
+  imports: [
+    CommonModule,
+    RouterModule,
+    MatButtonModule,
+    MatCardModule,
+    MatGridListModule,
+    MatDividerModule
+  ],
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss']
+})
+export class HomeComponent {
+  features = [
+    {
+      name: 'Zumba',
+      description: 'Clases de baile aeróbico con ritmo latino para poner tu cuerpo en movimiento.',
+      image: 'assets/images/classes/zumba.jpg'
+    },
+    {
+      name: 'Pilates',
+      description: 'Ejercicios de bajo impacto centrados en el fortalecimiento del core y la flexibilidad.',
+      image: 'assets/images/classes/pilates.jpg'
+    },
+    {
+      name: 'CrossFit',
+      description: 'Entrenamiento funcional que combina pesas, cardio y agilidad.',
+      image: 'assets/images/classes/crossfit.jpg'
+    }
+  ];
+}

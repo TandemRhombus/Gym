@@ -1,0 +1,7 @@
+.content {
+    padding: 1rem;
+    min-height: calc(100vh - 128px); // Ajusta según header+nav+footer
+    display: flex;
+    flex-direction: column;
+}
+  
