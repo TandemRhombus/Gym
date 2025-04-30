@@ -25,17 +25,17 @@ export class HomeComponent {
     {
       name: 'Zumba',
       description: 'Clases de baile aeróbico con ritmo latino para poner tu cuerpo en movimiento.',
-      image: 'assets/images/classes/zumba.jpg'
+      image: '/assets/images/zumba.jpg'
     },
     {
       name: 'Pilates',
       description: 'Ejercicios de bajo impacto centrados en el fortalecimiento del core y la flexibilidad.',
-      image: 'assets/images/classes/pilates.jpg'
+      image: '/assets/images/pilates.jpg'
     },
     {
       name: 'CrossFit',
       description: 'Entrenamiento funcional que combina pesas, cardio y agilidad.',
-      image: 'assets/images/classes/crossfit.jpg'
+      image: '/assets/images/crossfit.jpg'
     }
   ];
 }

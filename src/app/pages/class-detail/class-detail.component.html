@@ -1,1 +1,42 @@
-<p>class-detail works!</p>
+@if (gymClass) {
+    <mat-card class="detail-card">
+      <mat-card-header>
+        <mat-card-title>{{ gymClass.name }}</mat-card-title>
+      </mat-card-header>
+  
+      <img
+        mat-card-image
+        [src]="gymClass.image"
+        alt="{{ gymClass.name }}"
+      >
+  
+      <mat-card-content>
+        <p>{{ gymClass.description }}</p>
+        <mat-divider></mat-divider>
+  
+        <h3>Horario</h3>
+        <ul class="schedule-list">
+          @for (time of gymClass.schedule; track time) {
+            <li>{{ time }}</li>
+          } @empty {
+            <li>No hay horarios disponibles</li>
+          }
+        </ul>
+      </mat-card-content>
+  
+      <mat-card-actions>
+        <button mat-raised-button color="primary" (click)="onEnroll()">
+          Inscribirme
+        </button>
+        <button mat-button routerLink="/classes">
+          Volver a Clases
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  } @else {
+    <p class="not-found">
+      Clase no encontrada. 
+      <a routerLink="/classes">Ver todas las clases</a>.
+    </p>
+  }
+  

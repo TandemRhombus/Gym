@@ -1,11 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
+import { GymService } from '../../services/gym.service';
+import { GymClass } from '../../interfaces/gym-class.interface';
 
 @Component({
   selector: 'app-schedule',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule, MatCardModule, MatDividerModule],
   templateUrl: './schedule.component.html',
-  styleUrl: './schedule.component.scss'
+  styleUrls: ['./schedule.component.scss']
 })
-export class ScheduleComponent {
+export class ScheduleComponent implements OnInit {
+  classes: GymClass[] = [];
 
+  constructor(private gymService: GymService) {}
+
+  ngOnInit(): void {
+    this.classes = this.gymService.getClasses();
+  }
 }

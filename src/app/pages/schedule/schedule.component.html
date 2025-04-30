@@ -1,1 +1,24 @@
-<p>schedule works!</p>
+<h1>Horario de Clases</h1>
+<mat-divider></mat-divider>
+
+<section class="schedule-section">
+  @for (c of classes; track c.id) {
+    <mat-card class="schedule-card">
+      <mat-card-header>
+        <mat-card-title>{{ c.name }}</mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content>
+        <ul>
+          @for (time of c.schedule; track time) {
+            <li>{{ time }}</li>
+          } @empty {
+            <li>No hay horarios disponibles</li>
+          }
+        </ul>
+      </mat-card-content>
+    </mat-card>
+  } @empty {
+    <p class="empty">No hay clases disponibles en este momento.</p>
+  }
+</section>

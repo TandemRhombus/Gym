@@ -1,31 +1,94 @@
+// src/app/pages/home/home.component.scss
+
 .hero {
-    background: url('assets/images/hero-gym.jpg') center/cover no-repeat;
-    color: white;
-    text-align: center;
-    padding: 4rem 1rem;
-  }
-  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/assets/images/hero-gym.jpg') center/cover no-repeat;
+  color: #fff;
+  text-align: center;
+  padding: 2rem;
+
   .hero-content {
     max-width: 600px;
-    margin: 0 auto;
+    padding: 2rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
   }
-  
-  .features {
-    padding: 2rem 1rem;
-    text-align: center;
-  }
-  
-  .features h2 {
+
+  h1 {
+    font-size: 2.8rem;
     margin-bottom: 1rem;
   }
-  
-  .cta {
-    background-color: #f5f5f5;
-    padding: 2rem 1rem;
-    text-align: center;
+
+  p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
   }
-  
-  .cta h2 {
-    margin-bottom: 0.5rem;
+}
+
+.features {
+  padding: 3rem 1rem;
+  text-align: center;
+  background-color: #fafafa;
+
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: #3f51b5;
   }
-  
+
+  mat-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 12px;
+    transition: transform 0.2s;
+    overflow: hidden;
+
+    &:hover {
+      transform: translateY(-6px);
+    }
+
+    mat-card-header {
+      justify-content: center;
+    }
+
+    mat-card-title {
+      font-weight: bold;
+      color: #333;
+      text-align: center;
+      font-size: 1.2rem;
+    }
+
+    mat-card-content p {
+      font-size: 0.95rem;
+      color: #666;
+    }
+  }
+}
+
+.cta {
+  background-color: #3f51b5;
+  color: #fff;
+  text-align: center;
+  padding: 3rem 1rem;
+
+  h2 {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+  }
+
+  button {
+    font-size: 1rem;
+  }
+}
