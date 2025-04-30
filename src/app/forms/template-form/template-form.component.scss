@@ -1,0 +1,38 @@
+.template-form-container {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 1rem;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  
+    form {
+      display: grid;
+      gap: 1rem;
+    }
+  
+    mat-form-field {
+      width: 100%;
+    }
+  
+    .error {
+      color: #d32f2f;
+      font-size: 0.875rem;
+      margin-top: -0.5rem;
+    }
+  
+    .membership-label {
+      font-weight: 500;
+      margin-top: 1rem;
+    }
+  
+    .membership-options {
+      display: flex;
+      gap: 1rem;
+    }
+  
+    button {
+      justify-self: end;
+    }
+}
+  

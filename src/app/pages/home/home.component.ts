@@ -5,6 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatDividerModule } from '@angular/material/divider';
+import { VideoPlayerComponent } from '../../shared/video-player/video-player.component';
 
 @Component({
   selector: 'app-home',
@@ -15,7 +16,8 @@ import { MatDividerModule } from '@angular/material/divider';
     MatButtonModule,
     MatCardModule,
     MatGridListModule,
-    MatDividerModule
+    MatDividerModule,
+    VideoPlayerComponent
   ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']

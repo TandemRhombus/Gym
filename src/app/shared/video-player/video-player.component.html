@@ -1,1 +1,24 @@
-<p>video-player works!</p>
+<mat-card class="video-card">
+    <mat-card-header>
+      <mat-card-title>{{ title }}</mat-card-title>
+    </mat-card-header>
+  
+    <mat-card-content>
+      <div class="video-container">
+        <video
+          [src]="videoUrl | safeUrl"
+          controls
+          poster="assets/images/video-poster.jpg"
+        ></video>
+      </div>
+    </mat-card-content>
+  
+    <mat-card-actions>
+      <button mat-icon-button (click)="play()">
+        <mat-icon>play_arrow</mat-icon>
+      </button>
+      <button mat-icon-button (click)="pause()">
+        <mat-icon>pause</mat-icon>
+      </button>
+    </mat-card-actions>
+</mat-card>

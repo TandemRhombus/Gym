@@ -1,1 +1,71 @@
-<p>template-form works!</p>
+<div class="template-form-container">
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+  
+      <mat-form-field appearance="outline">
+        <mat-label>Nombre</mat-label>
+        <input matInput name="name" [(ngModel)]="name" #nameModel="ngModel" required pattern="[a-zA-Z ]+" />
+      </mat-form-field>
+      <p class="error" *ngIf="nameModel.invalid && nameModel.touched">
+        Nombre solo letras y requerido
+      </p>
+  
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput name="email" [(ngModel)]="email" #emailModel="ngModel" required email />
+      </mat-form-field>
+      <p class="error" *ngIf="emailModel.invalid && emailModel.touched">
+        Email inválido
+      </p>
+  
+      <mat-form-field appearance="outline">
+        <mat-label>Teléfono</mat-label>
+        <input matInput name="phone" [(ngModel)]="phone" #phoneModel="ngModel" required pattern="^[0-9]{10}$" />
+      </mat-form-field>
+      <p class="error" *ngIf="phoneModel.invalid && phoneModel.touched">
+        Teléfono debe ser 10 dígitos
+      </p>
+  
+      <mat-form-field appearance="outline">
+        <mat-label>Programa</mat-label>
+        <mat-select name="program" [(ngModel)]="program" #programModel="ngModel" required>
+          <mat-option *ngFor="let item of programs" [value]="item">{{ item }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <p class="error" *ngIf="programModel.invalid && programModel.touched">
+        Seleccione un programa
+      </p>
+  
+      <label class="membership-label">Tipo de Membresía:</label>
+      <div class="membership-options">
+        <mat-radio-button *ngFor="let type of membershipTypes" name="membership" [(ngModel)]="membership" [value]="type">
+          {{ type }}
+        </mat-radio-button>
+      </div>
+      <p class="error" *ngIf="!membership && f.submitted">
+        Seleccione un tipo de membresía
+      </p>
+  
+      <mat-form-field appearance="outline">
+        <mat-label>Fecha</mat-label>
+        <input
+          matInput
+          [min]="minDate"
+          name="date"
+          [(ngModel)]="date"
+          #dateModel="ngModel"
+          [matDatepicker]="picker"
+          required
+        />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <p class="error" *ngIf="dateModel.invalid && dateModel.touched">
+        Fecha requerida y no anterior a hoy
+      </p>
+  
+      <button mat-raised-button color="primary" type="submit" [disabled]="f.invalid">
+        Enviar
+      </button>
+    </form>
+</div>
+  
