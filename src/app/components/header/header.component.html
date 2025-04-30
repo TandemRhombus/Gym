@@ -1,1 +1,16 @@
-<p>header works!</p>
+<mat-toolbar color="primary">
+    <span class="logo" routerLink="/">Gym App</span>
+    <span class="spacer"></span>
+  
+    @if (auth.isLoggedIn()) {
+      <button mat-button (click)="logout()">
+        <mat-icon>logout</mat-icon>
+        Cerrar sesión
+      </button>
+    } @else {
+      <button mat-button routerLink="/login">
+        <mat-icon>login</mat-icon>
+        Iniciar sesión
+      </button>
+    }
+  </mat-toolbar>

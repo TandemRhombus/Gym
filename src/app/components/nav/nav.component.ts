@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-nav',
-  imports: [],
+  standalone: true,
+  imports: [RouterModule, MatButtonModule],
   templateUrl: './nav.component.html',
-  styleUrl: './nav.component.scss'
+  styleUrls: ['./nav.component.scss']
 })
-export class NavComponent {
-
-}
+export class NavComponent {}
