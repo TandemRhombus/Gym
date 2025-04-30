@@ -1,1 +1,53 @@
-<p>login works!</p>
+<div class="login-container" @fadeIn>
+    <mat-card>
+      <h2>Iniciar Sesión</h2>
+  
+      <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+        <mat-form-field appearance="outline">
+          <mat-label>Usuario</mat-label>
+          <input
+            matInput
+            name="username"
+            [(ngModel)]="username"
+            #usernameModel="ngModel"
+            required
+            minlength="4"
+            placeholder="Tu usuario"
+          />
+        </mat-form-field>
+        @if (usernameModel.invalid && usernameModel.touched) {
+          <p class="error-text">
+            Usuario requerido (mínimo 4 caracteres)
+          </p>
+        }
+  
+        <mat-form-field appearance="outline">
+          <mat-label>Contraseña</mat-label>
+          <input
+            matInput
+            type="password"
+            name="password"
+            [(ngModel)]="password"
+            #passwordModel="ngModel"
+            required
+            minlength="6"
+            placeholder="Tu contraseña"
+          />
+        </mat-form-field>
+        @if (passwordModel.invalid && passwordModel.touched) {
+          <p class="error-text">
+            Contraseña requerida (mínimo 6 caracteres)
+          </p>
+        }
+  
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="loginForm.invalid"
+        >
+          Entrar
+        </button>
+      </form>
+    </mat-card>
+  </div>
