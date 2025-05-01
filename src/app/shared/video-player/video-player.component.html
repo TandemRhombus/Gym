@@ -6,13 +6,18 @@
               [src]="videoUrl | safeUrl"
               autoplay
               [muted]="true"              
-              controls
               poster="/assets/images/video-poster.jpg"
             ></video>
         </div>
     </mat-card-content>
   
     <mat-card-actions>
+      <button mat-icon-button (click)="play()">
+        <mat-icon>play_arrow</mat-icon>
+      </button>
+      <button mat-icon-button (click)="pause()">
+        <mat-icon>pause</mat-icon>
+      </button>
     </mat-card-actions>
   </mat-card>
   
