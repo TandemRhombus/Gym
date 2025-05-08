@@ -3,4 +3,9 @@
     <button mat-button routerLink="/classes">Clases</button>
     <button mat-button routerLink="/schedule">Horario</button>
     <button mat-button routerLink="/contact">Contacto</button>
-</nav>
+  
+    @if (auth.isLoggedIn()) {
+      <button mat-button routerLink="/admin">Admin</button>
+    }
+  </nav>
+  

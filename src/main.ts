@@ -12,6 +12,7 @@ import { ContactComponent } from './app/pages/contact/contact.component';
 import { LoginComponent } from './app/auth/login/login.component';
 import { TemplateFormComponent } from './app/forms/template-form/template-form.component';
 import { ReactiveFormComponent } from './app/forms/reactive-form/reactive-form.component';
+import { AdminDashboardComponent } from './app/pages/admin-dashboard/admin-dashboard.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'template-form', component: TemplateFormComponent },
   { path: 'reactive-form', component: ReactiveFormComponent },
+  { path: 'admin', component: AdminDashboardComponent },
   { path: '**', redirectTo: '' }
 ];
 
@@ -29,6 +31,6 @@ bootstrapApplication(AppComponent, {
   providers: [
     provideAnimations(),
     provideRouter(routes),
-    provideHttpClient() // Aquí se agrega HttpClientModule correctamente para standalone
+    provideHttpClient() 
   ]
 }).catch(err => console.error(err));
