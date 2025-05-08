@@ -4,12 +4,12 @@
       <iframe
         width="100%"
         height="500"
-        src="https://www.youtube.com/embed/I_RYujJvZ7s?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0"
-        title="YouTube video"
+        [src]="videoUrl | safeUrl"
+        [title]="title"
         frameborder="0"
         allow="autoplay; encrypted-media; picture-in-picture"
-        allowfullscreen
-      ></iframe>
+        allowfullscreen>
+      </iframe>
     </div>
   </mat-card-content>
 </mat-card>
