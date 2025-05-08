@@ -1,12 +1,122 @@
 mat-toolbar {
-    .logo {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #fff;
-      text-decoration: none;
-      cursor: pointer;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(0, 0, 0, 0.95) 100%) !important;
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(79, 172, 254, 0.3);
+  padding: 0 2rem;
+  height: 70px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .logo {
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+    
+    img {
+      height: 40px;
+      transition: all 0.3s ease;
+      filter: drop-shadow(0 0 5px rgba(79, 172, 254, 0.5));
     }
-    .spacer {
-      flex: 1 1 auto;
+
+    &:hover {
+      transform: scale(1.05);
+      
+      img {
+        filter: drop-shadow(0 0 8px rgba(79, 172, 254, 0.8));
+      }
     }
+  }
+
+  .spacer {
+    flex: 1 1 auto;
+  }
+
+  button {
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 500;
+    letter-spacing: 1px;
+    border-radius: 20px;
+    margin-left: 10px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+
+    mat-icon {
+      transition: all 0.3s ease;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(to right, #00f2fe, #4facfe);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.3s ease;
+    }
+
+    &:hover {
+      color: white;
+      background-color: rgba(79, 172, 254, 0.1);
+
+      mat-icon {
+        color: #00f2fe;
+        transform: scale(1.1);
+      }
+
+      &::before {
+        transform: scaleX(1);
+        transform-origin: left;
+      }
+    }
+
+    &:focus {
+      outline: none;
+      background-color: rgba(79, 172, 254, 0.2);
+    }
+  }
+}
+
+// Efecto especial para el botón activo
+.router-link-active {
+  button {
+    color: #00f2fe !important;
+    
+    &::before {
+      transform: scaleX(1) !important;
+      background: #00f2fe !important;
+    }
+    
+    mat-icon {
+      color: #00f2fe !important;
+    }
+  }
+}
+
+// Responsive para pantallas pequeñas
+@media (max-width: 768px) {
+  mat-toolbar {
+    padding: 0 1rem;
+    
+    button {
+      span {
+        display: none;
+      }
+      
+      mat-icon {
+        margin-right: 0;
+      }
+    }
+  }
 }

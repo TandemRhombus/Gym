@@ -1,43 +1,128 @@
 // src/app/pages/home/home.component.scss
 
+// Variables de tema futurista
+$primary: #00f2fe;
+$secondary: #4facfe;
+$dark: #0f172a;
+$neon-glow: 0 0 10px rgba(79, 172, 254, 0.8);
+
 .hero {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 80vh;
-  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/assets/images/hero-gym.jpg') center/cover no-repeat;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.5) 0%, rgba(0, 0, 0, 0.9) 100%), 
+              url('/assets/images/hero-gym.jpg') center/cover no-repeat;
   color: #fff;
   text-align: center;
-  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, transparent 0%, rgba($primary, 0.1) 100%);
+    pointer-events: none;
+  }
 
   .hero-content {
     max-width: 600px;
-    padding: 2rem;
-    background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    padding: 2.5rem;
+    background-color: rgba($dark, 0.7);
+    border-radius: 16px;
+    border: 1px solid rgba($primary, 0.3);
+    backdrop-filter: blur(1px);
+    position: relative;
+    z-index: 1;
+    box-shadow: $neon-glow;
+    transition: all 0.3s ease;
+
+    &:hover {
+      box-shadow: 0 0 20px rgba($primary, 0.6);
+    }
   }
 
   h1 {
-    font-size: 2.8rem;
-    margin-bottom: 1rem;
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(to right, $primary, $secondary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-transform: uppercase;
+    letter-spacing: 2px;
   }
 
   p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
+    font-size: 1.3rem;
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+  }
+
+  button {
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding: 0.8rem 2rem;
+    border-radius: 30px;
+    background: linear-gradient(45deg, $primary, $secondary);
+    border: none;
+    box-shadow: 0 4px 15px rgba($primary, 0.4);
+    transition: all 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba($primary, 0.6);
+    }
   }
 }
 
 .features {
-  padding: 3rem 1rem;
+  padding: 4rem 1rem;
   text-align: center;
-  background-color: #fafafa;
+  background-color: $dark;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+      radial-gradient(circle at 20% 30%, rgba($primary, 0.1) 0%, transparent 30%),
+      radial-gradient(circle at 80% 70%, rgba($secondary, 0.1) 0%, transparent 30%);
+    pointer-events: none;
+  }
 
   h2 {
-    font-size: 2rem;
-    margin-bottom: 2rem;
-    color: #3f51b5;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: white;
+    position: relative;
+    display: inline-block;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(to right, $primary, $secondary);
+    }
+  }
+
+  mat-grid-list {
+    max-width: 1200px;
+    margin: 0 auto;
   }
 
   mat-card {
@@ -45,70 +130,154 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    border-radius: 12px;
-    transition: transform 0.2s;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba($primary, 0.2);
+    border-radius: 16px;
+    transition: all 0.3s ease;
     overflow: hidden;
+    color: white;
 
     &:hover {
-      transform: translateY(-6px);
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: $neon-glow;
+      border-color: $primary;
     }
 
     mat-card-header {
       justify-content: center;
+      padding: 1.5rem 1rem 0;
     }
 
     mat-card-title {
-      font-weight: bold;
-      color: #333;
+      font-weight: 600;
+      color: white;
       text-align: center;
-      font-size: 1.2rem;
+      font-size: 1.4rem;
+      letter-spacing: 1px;
+    }
+
+    img {
+      transition: transform 0.5s ease;
+      filter: saturate(1.2) contrast(1.1);
+    }
+
+    &:hover img {
+      transform: scale(1.05);
     }
 
     mat-card-content p {
-      font-size: 0.95rem;
-      color: #666;
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.8);
+      padding: 0 1rem 1.5rem;
     }
   }
 }
 
 .cta {
-  background-color: #3f51b5;
+  background: linear-gradient(135deg, $dark 0%, lighten($dark, 5%) 100%);
   color: #fff;
   text-align: center;
-  padding: 3rem 1rem;
+  padding: 4rem 1rem;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+      linear-gradient(45deg, transparent 65%, rgba($primary, 0.1) 100%);
+    pointer-events: none;
+  }
 
   h2 {
-    font-size: 2.2rem;
-    margin-bottom: 1rem;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    background: linear-gradient(to right, $primary, $secondary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
 
   p {
-    font-size: 1.1rem;
-    margin-bottom: 2rem;
+    font-size: 1.2rem;
+    margin-bottom: 2.5rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
   }
 
   button {
-    font-size: 1rem;
+    font-size: 1.1rem;
+    padding: 0.8rem 2.5rem;
+    border-radius: 30px;
+    background: transparent;
+    border: 2px solid $primary;
+    color: $primary;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba($primary, 0.3), transparent);
+      transition: 0.5s;
+    }
+    
+    &:hover {
+      box-shadow: $neon-glow;
+      color: white;
+      border-color: $secondary;
+      
+      &::before {
+        left: 100%;
+      }
+    }
   }
 }
 
 .video-section {
   width: 100%;
   padding: 0;
+  background-color: $dark;
+  border-top: 1px solid rgba($primary, 0.2);
+  border-bottom: 1px solid rgba($primary, 0.2);
 
   app-video-player {
     display: block;
+    max-width: 1200px;
+    margin: 0 auto;
 
     .video-card {
       border-radius: 0;
       margin: 0;
       max-width: 100%;
       box-shadow: none;
+      background: transparent;
+      border: none;
     }
 
     .video-container {
       padding-top: 56.25%; /* 16:9 */
+      position: relative;
     }
   }
+}
+
+mat-divider {
+  border-top-color: rgba($primary, 0.2);
 }
