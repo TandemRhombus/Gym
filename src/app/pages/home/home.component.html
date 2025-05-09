@@ -6,6 +6,21 @@
     </div>
   </section>
 
+  <section class="carousel-section">
+    <h2>Si fuera FACIL todos serian BUENOS</h2>
+    <div class="carousel-container">
+      <div class="carousel-slide">
+        <img src="assets/images/img1.jpg" alt="Instalaciones del gimnasio 1">
+        <img src="assets/images/img2.jpg" alt="Instalaciones del gimnasio 2">
+        <img src="assets/images/img3.jpg" alt="Instalaciones del gimnasio 3">
+        <img src="assets/images/img4.jpg" alt="Instalaciones del gimnasio 4">
+      </div>
+      <button class="carousel-btn prev" (click)="prevSlide()">&#10094;</button>
+      <button class="carousel-btn next" (click)="nextSlide()">&#10095;</button>
+    </div>
+  </section>
+
+
   <section class="video-section">
     <app-video-player
       [videoUrl]="'https://www.youtube.com/embed/I_RYujJvZ7s?autoplay=1&mute=1&controls=0'"
