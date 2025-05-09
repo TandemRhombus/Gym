@@ -1,23 +1,15 @@
 <mat-card class="video-card">
-    <mat-card-content>
-        <div class="video-container">
-            <video
-              #videoPlayer
-              [src]="videoUrl | safeUrl"
-              autoplay
-              [muted]="true"              
-              poster="/assets/images/video-poster.jpg"
-            ></video>
-        </div>
-    </mat-card-content>
-  
-    <mat-card-actions>
-      <button mat-icon-button (click)="play()">
-        <mat-icon>play_arrow</mat-icon>
-      </button>
-      <button mat-icon-button (click)="pause()">
-        <mat-icon>pause</mat-icon>
-      </button>
-    </mat-card-actions>
-  </mat-card>
-  
+  <mat-card-content>
+    <div class="video-container">
+      <iframe
+        width="100%"
+        height="500"
+        [src]="videoUrl | safeUrl"
+        [title]="title"
+        frameborder="0"
+        allow="autoplay; encrypted-media; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </mat-card-content>
+</mat-card>

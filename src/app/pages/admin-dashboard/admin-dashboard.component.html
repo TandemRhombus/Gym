@@ -1,0 +1,49 @@
+<mat-tab-group>
+
+    <mat-tab label="Inscripciones">
+      @if (enrollments.length > 0) {
+        @for (e of enrollments; track e.id) {
+          <div class="item">
+            <span>{{ e.name }}</span>
+            <button mat-icon-button color="warn" (click)="removeEnrollment(e.id)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        }
+      } @else {
+        <p>No hay inscripciones registradas.</p>
+      }
+    </mat-tab>
+  
+    <mat-tab label="Template Entries">
+      @if (templateEntries.length > 0) {
+        @for (entry of templateEntries; track entry.email) {
+          <div class="item">
+            <span>{{ entry.name }} - {{ entry.email }}</span>
+            <button mat-icon-button color="warn" (click)="removeTemplate(templateEntries.indexOf(entry))">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        }
+      } @else {
+        <p>No hay datos de formulario por template.</p>
+      }
+    </mat-tab>
+  
+    <mat-tab label="Reactive Entries">
+      @if (reactiveEntries.length > 0) {
+        @for (entry of reactiveEntries; track entry.email) {
+          <div class="item">
+            <span>{{ entry.name }} - {{ entry.email }}</span>
+            <button mat-icon-button color="warn" (click)="removeReactive(reactiveEntries.indexOf(entry))">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        }
+      } @else {
+        <p>No hay datos de formulario reactivo.</p>
+      }
+    </mat-tab>
+  
+  </mat-tab-group>
+  
