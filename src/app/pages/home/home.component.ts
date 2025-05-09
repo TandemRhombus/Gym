@@ -40,4 +40,39 @@ export class HomeComponent {
       image: '/assets/images/crossfit.jpg'
     }
   ];
+
+
+  currentSlide = 0;
+  slideCount = 4; // Número de imágenes en el carrusel
+
+  ngOnInit(): void {
+    this.startAutoSlide();
+  }
+
+  nextSlide(): void {
+    this.currentSlide = (this.currentSlide + 1) % this.slideCount;
+    this.updateSlidePosition();
+  }
+
+  prevSlide(): void {
+    this.currentSlide = (this.currentSlide - 1 + this.slideCount) % this.slideCount;
+    this.updateSlidePosition();
+  }
+
+  private updateSlidePosition(): void {
+    const slideElement = document.querySelector('.carousel-slide') as HTMLElement;
+    if (slideElement) {
+      slideElement.style.transform = `translateX(-${this.currentSlide * 100}%)`;
+    }
+  }
+
+  private startAutoSlide(): void {
+    setInterval(() => {
+      this.nextSlide();
+    }, 5000); // Cambia de slide cada 5 segundos
+  }
+
+
+
+
 }
