@@ -6,8 +6,8 @@ import { User } from '../interfaces/user.interface';
 })
 export class AuthService {
   private admins: User[] = [
-    { username: 'admin1', password: 'pass123', fullName: 'Administrador Uno' },
-    { username: 'admin2', password: 'pass456', fullName: 'Administrador Dos' },
+    { username: 'admin1', password: 'pass123', fullName: 'Sergio Emiliano Hernandez Villalpando' },
+    { username: 'admin2', password: 'pass456', fullName: 'Ivan Favela Ruvalcaba' },
     { username: 'admin3', password: 'pass789', fullName: 'Administrador Tres' }
   ];
 

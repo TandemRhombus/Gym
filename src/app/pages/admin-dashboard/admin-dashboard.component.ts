@@ -13,9 +13,11 @@ import { MatSelectModule }    from '@angular/material/select';
 import { MatRadioModule }     from '@angular/material/radio';
 import { MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule} from '@angular/material/core';
-import { MatSnackBarModule,
-         MatSnackBar }        from '@angular/material/snack-bar';
-import { MatDividerModule } from '@angular/material/divider';
+import {
+  MatSnackBar,
+  MatSnackBarModule
+} from '@angular/material/snack-bar';
+import { MatDividerModule }   from '@angular/material/divider';
 
 import { InscriptionService }  from '../../services/inscription.service';
 import { TemplateDataService } from '../../services/template-data.service';
@@ -54,7 +56,11 @@ export class AdminDashboardComponent implements OnInit {
   editingTemplateIndex: number | null = null;
   editingTemplateEntry: any = {};
 
-  // Fecha mínima para edición de fecha si aplica
+  // Para edición inline de reactive entries
+  editingReactiveIndex: number | null = null;
+  editingReactiveEntry: any = {};
+
+  // Fecha mínima para pickers
   minDate: Date;
 
   constructor(
@@ -86,7 +92,6 @@ export class AdminDashboardComponent implements OnInit {
   // Template form entries
   startEditTemplate(index: number): void {
     this.editingTemplateIndex = index;
-    // Clonamos para no mutar directamente
     this.editingTemplateEntry = { ...this.templateEntries[index] };
   }
 
@@ -96,7 +101,7 @@ export class AdminDashboardComponent implements OnInit {
     this.templateData.updateEntries(this.templateEntries);
     this.editingTemplateIndex = null;
     this.editingTemplateEntry = {};
-    this.snackBar.open('Entrada actualizada', 'Cerrar', { duration: 3000 });
+    this.snackBar.open('Entrada template actualizada', 'Cerrar', { duration: 3000 });
     this.loadAll();
   }
 
@@ -112,6 +117,26 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   // Reactive form entries
+  startEditReactive(index: number): void {
+    this.editingReactiveIndex = index;
+    this.editingReactiveEntry = { ...this.reactiveEntries[index] };
+  }
+
+  saveEditReactive(): void {
+    if (this.editingReactiveIndex === null) return;
+    this.reactiveEntries[this.editingReactiveIndex] = this.editingReactiveEntry;
+    this.reactiveData.updateEntries(this.reactiveEntries);
+    this.editingReactiveIndex = null;
+    this.editingReactiveEntry = {};
+    this.snackBar.open('Entrada reactiva actualizada', 'Cerrar', { duration: 3000 });
+    this.loadAll();
+  }
+
+  cancelEditReactive(): void {
+    this.editingReactiveIndex = null;
+    this.editingReactiveEntry = {};
+  }
+
   removeReactive(index: number): void {
     this.reactiveEntries.splice(index, 1);
     this.reactiveData.updateEntries(this.reactiveEntries);

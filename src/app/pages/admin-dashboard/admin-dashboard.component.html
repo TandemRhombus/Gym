@@ -134,42 +134,92 @@
   }
 </mat-tab>
 
-
   <!-- Formularios Reactivos -->
-  <mat-tab label="Formularios Reactivos">
-    @if (reactiveEntries.length > 0) {
-      <table class="data-table">
-        <thead>
+<mat-tab label="Formularios Reactivos">
+  @if (reactiveEntries.length > 0) {
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Email</th>
+          <th>Asunto</th>
+          <th>¿Cómo nos conoció?</th>
+          <th>Fecha</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (entry of reactiveEntries; track entry.email) {
           <tr>
-            <th>Nombre</th>
-            <th>Email</th>
-            <th>Asunto</th>
-            <th>¿Cómo nos conoció?</th>
-            <th>Fecha</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          @for (entry of reactiveEntries; track entry.email) {
-            <tr>
+            @if (editingReactiveIndex === reactiveEntries.indexOf(entry)) {
+              <!-- Modo edición -->
+              <td>
+                <mat-form-field appearance="outline">
+                  <input matInput [(ngModel)]="editingReactiveEntry.name" name="reactName" />
+                </mat-form-field>
+              </td>
+              <td>
+                <mat-form-field appearance="outline">
+                  <input matInput [(ngModel)]="editingReactiveEntry.email" name="reactEmail" />
+                </mat-form-field>
+              </td>
+              <td>
+                <mat-form-field appearance="outline">
+                  <input matInput [(ngModel)]="editingReactiveEntry.subject" name="reactSubject" />
+                </mat-form-field>
+              </td>
+              <td>
+                <mat-form-field appearance="outline">
+                  <input matInput [(ngModel)]="editingReactiveEntry.referral" name="reactReferral" />
+                </mat-form-field>
+              </td>
+              <td>
+                <mat-form-field appearance="outline">
+                  <input
+                    matInput
+                    [matDatepicker]="reactPicker"
+                    [(ngModel)]="editingReactiveEntry.date"
+                    name="reactDate"
+                    [min]="minDate"
+                  />
+                  <mat-datepicker-toggle matSuffix [for]="reactPicker"></mat-datepicker-toggle>
+                  <mat-datepicker #reactPicker></mat-datepicker>
+                </mat-form-field>
+              </td>
+              <td>
+                <button mat-icon-button color="primary" (click)="saveEditReactive()">
+                  <mat-icon>check</mat-icon>
+                </button>
+                <button mat-icon-button color="warn" (click)="cancelEditReactive()">
+                  <mat-icon>close</mat-icon>
+                </button>
+              </td>
+            } @else {
+              <!-- Modo lectura -->
               <td>{{ entry.name }}</td>
               <td>{{ entry.email }}</td>
               <td>{{ entry.subject }}</td>
               <td>{{ entry.referral }}</td>
               <td>{{ entry.date | date:'shortDate' }}</td>
               <td>
+                <button mat-icon-button color="primary"
+                        (click)="startEditReactive(reactiveEntries.indexOf(entry))">
+                  <mat-icon>edit</mat-icon>
+                </button>
                 <button mat-icon-button color="warn"
                         (click)="removeReactive(reactiveEntries.indexOf(entry))">
                   <mat-icon>delete</mat-icon>
                 </button>
               </td>
-            </tr>
-          }
-        </tbody>
-      </table>
-    } @else {
-      <p>No hay entradas de formulario registradas.</p>
-    }
-  </mat-tab>
+            }
+          </tr>
+        }
+      </tbody>
+    </table>
+  } @else {
+    <p>No hay entradas de formulario registradas.</p>
+  }
+</mat-tab>
+
 
 </mat-tab-group>
