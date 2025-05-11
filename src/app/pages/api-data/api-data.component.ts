@@ -1,23 +1,23 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
-
-import { ApiService, ApiClass } from '../../services/api.service';
-import { ApiListComponent } from '../../shared/api-list/api-list.component';
-import { SearchComponent } from '../../shared/search/search.component';
+// src/app/pages/api-data/api-data.component.ts
+import { Component, OnInit }        from '@angular/core';
+import { CommonModule }             from '@angular/common';
+import { HttpClientModule }         from '@angular/common/http';
+import { ApiService, ApiClass }     from '../../services/api.service';
+import { ApiListComponent }         from '../../shared/api-list/api-list.component';
+import { SearchComponent }          from '../../shared/search/search.component';
 
 @Component({
   selector: 'app-api-data',
   standalone: true,
   imports: [
     CommonModule,
-    HttpClientModule,
-    ApiListComponent,     // <-- IMPORTANTE
-    SearchComponent       // <-- IMPORTANTE
+    HttpClientModule,   // necesario para HttpClient
+    ApiListComponent,
+    SearchComponent
   ],
   template: `
     <section class="api-container">
-      <h1>Clases desde API</h1>
+      <h1>Conoce nuestras clases</h1>
       <app-search (search)="onSearch($event)"></app-search>
       <app-api-list [items]="filtered"></app-api-list>
     </section>
