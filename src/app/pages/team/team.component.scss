@@ -6,6 +6,7 @@
   position: relative;
   overflow: hidden;
   text-align: center;
+   min-height: calc(100vh - 120px); /* sustituye 120px por la suma de header+footer */
 
   &::before {
     content: '';
