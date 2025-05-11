@@ -35,24 +35,79 @@
     }
   </mat-tab>
 
-  <!-- Formularios Template -->
-  <mat-tab label="Formularios Template">
-    @if (templateEntries.length > 0) {
-      <table class="data-table">
-        <thead>
+ <!-- Formularios Template -->
+<mat-tab label="Formularios Template">
+  @if (templateEntries.length > 0) {
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Email</th>
+          <th>Teléfono</th>
+          <th>Programa</th>
+          <th>Membresía</th>
+          <th>Fecha</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (entry of templateEntries; track entry.email) {
           <tr>
-            <th>Nombre</th>
-            <th>Email</th>
-            <th>Teléfono</th>
-            <th>Programa</th>
-            <th>Membresía</th>
-            <th>Fecha</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          @for (entry of templateEntries; track entry.email) {
-            <tr>
+            @if (editingTemplateIndex === templateEntries.indexOf(entry)) {
+              <!-- Modo edición -->
+              <td>
+                <mat-form-field appearance="outline">
+                  <input matInput [(ngModel)]="editingTemplateEntry.name" name="name" />
+                </mat-form-field>
+              </td>
+              <td>
+                <mat-form-field appearance="outline">
+                  <input matInput [(ngModel)]="editingTemplateEntry.email" name="email" />
+                </mat-form-field>
+              </td>
+              <td>
+                <mat-form-field appearance="outline">
+                  <input matInput [(ngModel)]="editingTemplateEntry.phone" name="phone" />
+                </mat-form-field>
+              </td>
+              <td>
+                <mat-form-field appearance="outline">
+                  <mat-select [(ngModel)]="editingTemplateEntry.program">
+                    @for (p of ['Zumba', 'Pilates', 'CrossFit']; track p) {
+                      <mat-option [value]="p">{{ p }}</mat-option>
+                    }
+                  </mat-select>
+                </mat-form-field>
+              </td>
+              <td>
+                <mat-radio-group [(ngModel)]="editingTemplateEntry.membership">
+                  @for (m of ['Mensual', 'Anual']; track m) {
+                    <mat-radio-button [value]="m">{{ m }}</mat-radio-button>
+                  }
+                </mat-radio-group>
+              </td>
+              <td>
+                <mat-form-field appearance="outline">
+                  <input
+                    matInput
+                    [matDatepicker]="picker"
+                    [(ngModel)]="editingTemplateEntry.date"
+                    [min]="minDate"
+                  />
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+              </td>
+              <td>
+                <button mat-icon-button color="primary" (click)="saveEditTemplate()">
+                  <mat-icon>check</mat-icon>
+                </button>
+                <button mat-icon-button color="warn" (click)="cancelEditTemplate()">
+                  <mat-icon>close</mat-icon>
+                </button>
+              </td>
+            } @else {
+              <!-- Modo lectura -->
               <td>{{ entry.name }}</td>
               <td>{{ entry.email }}</td>
               <td>{{ entry.phone }}</td>
@@ -60,19 +115,25 @@
               <td>{{ entry.membership }}</td>
               <td>{{ entry.date | date:'shortDate' }}</td>
               <td>
+                <button mat-icon-button color="primary"
+                        (click)="startEditTemplate(templateEntries.indexOf(entry))">
+                  <mat-icon>edit</mat-icon>
+                </button>
                 <button mat-icon-button color="warn"
                         (click)="removeTemplate(templateEntries.indexOf(entry))">
                   <mat-icon>delete</mat-icon>
                 </button>
               </td>
-            </tr>
-          }
-        </tbody>
-      </table>
-    } @else {
-      <p>No hay entradas de formulario registradas.</p>
-    }
-  </mat-tab>
+            }
+          </tr>
+        }
+      </tbody>
+    </table>
+  } @else {
+    <p>No hay entradas de formulario registradas.</p>
+  }
+</mat-tab>
+
 
   <!-- Formularios Reactivos -->
   <mat-tab label="Formularios Reactivos">

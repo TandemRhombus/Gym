@@ -4,7 +4,6 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -20,7 +19,6 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
-    MatCheckboxModule,
     MatRadioModule,
     MatDatepickerModule,
     MatNativeDateModule,
@@ -68,6 +66,14 @@ export class TemplateFormComponent implements OnInit {
     this.entries.push(entry);
     localStorage.setItem('templateEntries', JSON.stringify(this.entries));
     this.snackBar.open('Formulario enviado', 'Cerrar', { duration: 3000 });
-    form.resetForm();
+
+    form.resetForm({
+      name: '',
+      email: '',
+      phone: '',
+      program: '',
+      membership: '',
+      date: null
+    });
   }
 }

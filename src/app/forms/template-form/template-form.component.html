@@ -68,21 +68,26 @@
     }
 
     <!-- Membresía (radio) -->
+    <!-- Membresía (radio) -->
     <label class="membership-label">Tipo de membresía</label>
-    <div class="membership-options">
+
+    <mat-radio-group
+      [(ngModel)]="membership"
+      name="membership"
+      required
+      class="membership-options"
+    >
       @for (m of membershipTypes; track m) {
-        <mat-radio-button
-          name="membership"
-          [(ngModel)]="membership"
-          [value]="m"
-        >
+        <mat-radio-button [value]="m">
           {{ m }}
         </mat-radio-button>
       }
-    </div>
+    </mat-radio-group>
+
     @if (!membership && f.submitted) {
       <p class="error">Selecciona un tipo de membresía.</p>
     }
+
 
     <!-- Fecha -->
     <mat-form-field appearance="outline">
