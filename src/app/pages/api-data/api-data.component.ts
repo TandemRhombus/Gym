@@ -17,7 +17,7 @@ import { SearchComponent }          from '../../shared/search/search.component';
   ],
   template: `
     <section class="api-container">
-      <h1>Clases desde API</h1>
+      <h1>Conoce nuestras clases</h1>
       <app-search (search)="onSearch($event)"></app-search>
       <app-api-list [items]="filtered"></app-api-list>
     </section>
