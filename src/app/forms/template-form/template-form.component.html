@@ -1,71 +1,116 @@
 <div class="template-form-container">
-    <form #f="ngForm" (ngSubmit)="onSubmit(f)">
-  
-      <mat-form-field appearance="outline">
-        <mat-label>Nombre</mat-label>
-        <input matInput name="name" [(ngModel)]="name" #nameModel="ngModel" required pattern="[a-zA-Z ]+" />
-      </mat-form-field>
-      <p class="error" *ngIf="nameModel.invalid && nameModel.touched">
-        Nombre solo letras y requerido
-      </p>
-  
-      <mat-form-field appearance="outline">
-        <mat-label>Email</mat-label>
-        <input matInput name="email" [(ngModel)]="email" #emailModel="ngModel" required email />
-      </mat-form-field>
-      <p class="error" *ngIf="emailModel.invalid && emailModel.touched">
-        Email inválido
-      </p>
-  
-      <mat-form-field appearance="outline">
-        <mat-label>Teléfono</mat-label>
-        <input matInput name="phone" [(ngModel)]="phone" #phoneModel="ngModel" required pattern="^[0-9]{10}$" />
-      </mat-form-field>
-      <p class="error" *ngIf="phoneModel.invalid && phoneModel.touched">
-        Teléfono debe ser 10 dígitos
-      </p>
-  
-      <mat-form-field appearance="outline">
-        <mat-label>Programa</mat-label>
-        <mat-select name="program" [(ngModel)]="program" #programModel="ngModel" required>
-          <mat-option *ngFor="let item of programs" [value]="item">{{ item }}</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <p class="error" *ngIf="programModel.invalid && programModel.touched">
-        Seleccione un programa
-      </p>
-  
-      <label class="membership-label">Tipo de Membresía:</label>
-      <div class="membership-options">
-        <mat-radio-button *ngFor="let type of membershipTypes" name="membership" [(ngModel)]="membership" [value]="type">
-          {{ type }}
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+
+    <!-- Nombre -->
+    <mat-form-field appearance="outline">
+      <mat-label>Nombre completo</mat-label>
+      <input
+        matInput
+        name="name"
+        [(ngModel)]="name"
+        #nameModel="ngModel"
+        required
+        pattern="^[A-Za-z ]+$"
+      />
+    </mat-form-field>
+    @if (nameModel.invalid && nameModel.touched) {
+      <p class="error">Nombre solo letras y requerido.</p>
+    }
+
+    <!-- Email -->
+    <mat-form-field appearance="outline">
+      <mat-label>Correo electrónico</mat-label>
+      <input
+        matInput
+        name="email"
+        [(ngModel)]="email"
+        #emailModel="ngModel"
+        required
+        email
+      />
+    </mat-form-field>
+    @if (emailModel.invalid && emailModel.touched) {
+      <p class="error">Email inválido.</p>
+    }
+
+    <!-- Teléfono -->
+    <mat-form-field appearance="outline">
+      <mat-label>Teléfono</mat-label>
+      <input
+        matInput
+        name="phone"
+        [(ngModel)]="phone"
+        #phoneModel="ngModel"
+        required
+        pattern="^[0-9]{10}$"
+      />
+    </mat-form-field>
+    @if (phoneModel.invalid && phoneModel.touched) {
+      <p class="error">Teléfono debe ser 10 dígitos.</p>
+    }
+
+    <!-- Programa (select) -->
+    <mat-form-field appearance="outline">
+      <mat-label>Programa</mat-label>
+      <mat-select
+        name="program"
+        [(ngModel)]="program"
+        #programModel="ngModel"
+        required
+      >
+        @for (prog of programs; track prog) {
+          <mat-option [value]="prog">{{ prog }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+    @if (programModel.invalid && programModel.touched) {
+      <p class="error">Selecciona un programa.</p>
+    }
+
+    <!-- Membresía (radio) -->
+    <label class="membership-label">Tipo de membresía</label>
+    <div class="membership-options">
+      @for (m of membershipTypes; track m) {
+        <mat-radio-button
+          name="membership"
+          [(ngModel)]="membership"
+          [value]="m"
+        >
+          {{ m }}
         </mat-radio-button>
-      </div>
-      <p class="error" *ngIf="!membership && f.submitted">
-        Seleccione un tipo de membresía
-      </p>
-  
-      <mat-form-field appearance="outline">
-        <mat-label>Fecha</mat-label>
-        <input
-          matInput
-          [min]="minDate"
-          name="date"
-          [(ngModel)]="date"
-          #dateModel="ngModel"
-          [matDatepicker]="picker"
-          required
-        />
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
-      <p class="error" *ngIf="dateModel.invalid && dateModel.touched">
-        Fecha requerida y no anterior a hoy
-      </p>
-  
-      <button mat-raised-button color="primary" type="submit" [disabled]="f.invalid">
-        Enviar
-      </button>
-    </form>
+      }
+    </div>
+    @if (!membership && f.submitted) {
+      <p class="error">Selecciona un tipo de membresía.</p>
+    }
+
+    <!-- Fecha -->
+    <mat-form-field appearance="outline">
+      <mat-label>Fecha de inicio</mat-label>
+      <input
+        matInput
+        [min]="minDate"
+        [matDatepicker]="picker"
+        name="date"
+        [(ngModel)]="date"
+        #dateModel="ngModel"
+        required
+      />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    @if (dateModel.invalid && dateModel.touched) {
+      <p class="error">Fecha requerida y no puede ser anterior a hoy.</p>
+    }
+
+    <!-- Botón Enviar -->
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="f.invalid"
+    >
+      Enviar
+    </button>
+  </form>
 </div>
-  

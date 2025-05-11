@@ -13,6 +13,7 @@ import { LoginComponent } from './app/auth/login/login.component';
 import { TemplateFormComponent } from './app/forms/template-form/template-form.component';
 import { ReactiveFormComponent } from './app/forms/reactive-form/reactive-form.component';
 import { AdminDashboardComponent } from './app/pages/admin-dashboard/admin-dashboard.component';
+import { TeamComponent } from './app/pages/team/team.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'template-form', component: TemplateFormComponent },
   { path: 'reactive-form', component: ReactiveFormComponent },
   { path: 'admin', component: AdminDashboardComponent },
+  { path: 'team', component: TeamComponent },
   { path: '**', redirectTo: '' }
 ];
 

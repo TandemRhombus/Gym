@@ -1,0 +1,21 @@
+<section class="team-container">
+
+  <h1>Nuestro Equipo</h1>
+
+  @if (team.length > 0) {
+    <div class="cards-grid">
+      @for (member of team; track member.name) {
+        <mat-card class="member-card">
+          <img mat-card-image [src]="member.photo" [alt]="member.name" />
+          <mat-card-content>
+            <h2>{{ member.name }}</h2>
+            <p>{{ member.role }}</p>
+          </mat-card-content>
+        </mat-card>
+      }
+    </div>
+  } @else {
+    <p class="empty">No hay miembros del equipo para mostrar.</p>
+  }
+
+</section>

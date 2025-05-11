@@ -1,1 +1,92 @@
-<p>reactive-form works!</p>
+<div class="reactive-form-container">
+  <form [formGroup]="form" (ngSubmit)="submit()">
+
+    <!-- Nombre -->
+    <mat-form-field appearance="outline" floatLabel="always">
+      <mat-label>Nombre completo</mat-label>
+      <input
+        matInput
+        formControlName="name"
+        placeholder="Ingresa tu nombre"
+      />
+      <mat-hint align="end">Solo letras</mat-hint>
+    </mat-form-field>
+    @if (form.get('name')?.touched && form.get('name')?.hasError('required')) {
+      <p class="error">Nombre es requerido.</p>
+    }
+    @if (form.get('name')?.touched && form.get('name')?.hasError('pattern')) {
+      <p class="error">Solo letras permitidas.</p>
+    }
+
+    <!-- Email -->
+    <mat-form-field appearance="outline" floatLabel="always">
+      <mat-label>Correo electrónico</mat-label>
+      <input
+        matInput
+        formControlName="email"
+        placeholder="correo@ejemplo.com"
+      />
+      <mat-hint align="end">Formato: usuario&#64;dominio</mat-hint>
+    </mat-form-field>
+    @if (form.get('email')?.touched && form.get('email')?.hasError('required')) {
+      <p class="error">Email es requerido.</p>
+    }
+    @if (form.get('email')?.touched && form.get('email')?.hasError('email')) {
+      <p class="error">Email inválido.</p>
+    }
+
+    <!-- Asunto -->
+    <mat-form-field appearance="outline" floatLabel="always">
+      <mat-label>Asunto</mat-label>
+      <mat-select formControlName="subject">
+        @for (s of subjects; track s) {
+          <mat-option [value]="s">{{ s }}</mat-option>
+        }
+      </mat-select>
+      <mat-hint align="end">¿Qué deseas?</mat-hint>
+    </mat-form-field>
+    @if (form.get('subject')?.touched && form.get('subject')?.invalid) {
+      <p class="error">Selecciona un asunto.</p>
+    }
+
+    <!-- ¿Cómo nos conoció? -->
+    <mat-form-field appearance="outline" floatLabel="always">
+      <mat-label>¿Cómo nos conoció?</mat-label>
+      <mat-select formControlName="referral">
+        @for (r of referrals; track r) {
+          <mat-option [value]="r">{{ r }}</mat-option>
+        }
+      </mat-select>
+      <mat-hint align="end">Elige una opción</mat-hint>
+    </mat-form-field>
+    @if (form.get('referral')?.touched && form.get('referral')?.invalid) {
+      <p class="error">Este campo es requerido.</p>
+    }
+
+    <!-- Fecha de cita -->
+    <mat-form-field appearance="outline" floatLabel="always">
+      <mat-label>Fecha de cita</mat-label>
+      <input
+        matInput
+        [min]="minDate"
+        [matDatepicker]="picker"
+        formControlName="date"
+        placeholder="dd/mm/aaaa"
+      />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-hint align="end">No antes de hoy</mat-hint>
+    </mat-form-field>
+    @if (form.get('date')?.touched && form.get('date')?.hasError('required')) {
+      <p class="error">Fecha requerida.</p>
+    }
+    @if (form.get('date')?.touched && form.get('date')?.hasError('pastDate')) {
+      <p class="error">No se permiten fechas pasadas.</p>
+    }
+
+    <!-- Botón -->
+    <button mat-raised-button color="accent" type="submit" [disabled]="form.invalid">
+      Enviar solicitud
+    </button>
+  </form>
+</div>

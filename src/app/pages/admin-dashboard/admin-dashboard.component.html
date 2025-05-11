@@ -1,49 +1,114 @@
 <mat-tab-group>
 
-    <mat-tab label="Inscripciones">
-      @if (enrollments.length > 0) {
-        @for (e of enrollments; track e.id) {
-          <div class="item">
-            <span>{{ e.name }}</span>
-            <button mat-icon-button color="warn" (click)="removeEnrollment(e.id)">
-              <mat-icon>delete</mat-icon>
-            </button>
-          </div>
-        }
-      } @else {
-        <p>No hay inscripciones registradas.</p>
-      }
-    </mat-tab>
-  
-    <mat-tab label="Template Entries">
-      @if (templateEntries.length > 0) {
-        @for (entry of templateEntries; track entry.email) {
-          <div class="item">
-            <span>{{ entry.name }} - {{ entry.email }}</span>
-            <button mat-icon-button color="warn" (click)="removeTemplate(templateEntries.indexOf(entry))">
-              <mat-icon>delete</mat-icon>
-            </button>
-          </div>
-        }
-      } @else {
-        <p>No hay datos de formulario por template.</p>
-      }
-    </mat-tab>
-  
-    <mat-tab label="Reactive Entries">
-      @if (reactiveEntries.length > 0) {
-        @for (entry of reactiveEntries; track entry.email) {
-          <div class="item">
-            <span>{{ entry.name }} - {{ entry.email }}</span>
-            <button mat-icon-button color="warn" (click)="removeReactive(reactiveEntries.indexOf(entry))">
-              <mat-icon>delete</mat-icon>
-            </button>
-          </div>
-        }
-      } @else {
-        <p>No hay datos de formulario reactivo.</p>
-      }
-    </mat-tab>
-  
-  </mat-tab-group>
-  
+  <!-- Inscripciones -->
+  <mat-tab label="Inscripciones">
+    @if (enrollments.length > 0) {
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Clase</th>
+            <th>Fecha</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (entry of enrollments; track entry.id) {
+            <tr>
+              <td>{{ entry.userName }}</td>
+              <td>{{ entry.userEmail }}</td>
+              <td>{{ entry.className }}</td>
+              <td>{{ entry.date | date:'short' }}</td>
+              <td>
+                <button mat-icon-button color="warn"
+                        (click)="removeEnrollment(enrollments.indexOf(entry))">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    } @else {
+      <p>No hay inscripciones registradas.</p>
+    }
+  </mat-tab>
+
+  <!-- Formularios Template -->
+  <mat-tab label="Formularios Template">
+    @if (templateEntries.length > 0) {
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Teléfono</th>
+            <th>Programa</th>
+            <th>Membresía</th>
+            <th>Fecha</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (entry of templateEntries; track entry.email) {
+            <tr>
+              <td>{{ entry.name }}</td>
+              <td>{{ entry.email }}</td>
+              <td>{{ entry.phone }}</td>
+              <td>{{ entry.program }}</td>
+              <td>{{ entry.membership }}</td>
+              <td>{{ entry.date | date:'shortDate' }}</td>
+              <td>
+                <button mat-icon-button color="warn"
+                        (click)="removeTemplate(templateEntries.indexOf(entry))">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    } @else {
+      <p>No hay entradas de formulario registradas.</p>
+    }
+  </mat-tab>
+
+  <!-- Formularios Reactivos -->
+  <mat-tab label="Formularios Reactivos">
+    @if (reactiveEntries.length > 0) {
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Asunto</th>
+            <th>¿Cómo nos conoció?</th>
+            <th>Fecha</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (entry of reactiveEntries; track entry.email) {
+            <tr>
+              <td>{{ entry.name }}</td>
+              <td>{{ entry.email }}</td>
+              <td>{{ entry.subject }}</td>
+              <td>{{ entry.referral }}</td>
+              <td>{{ entry.date | date:'shortDate' }}</td>
+              <td>
+                <button mat-icon-button color="warn"
+                        (click)="removeReactive(reactiveEntries.indexOf(entry))">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    } @else {
+      <p>No hay entradas de formulario registradas.</p>
+    }
+  </mat-tab>
+
+</mat-tab-group>

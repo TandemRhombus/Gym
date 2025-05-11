@@ -1,25 +1,27 @@
+// src/app/services/inscription.service.ts
 import { Injectable } from '@angular/core';
-import { GymClass } from '../interfaces/gym-class.interface';
+import { Enrollment } from '../interfaces/enrollment.interface';
 
 @Injectable({ providedIn: 'root' })
 export class InscriptionService {
   private key = 'enrollments';
 
-  getEnrollments(): GymClass[] {
+  getEnrollments(): Enrollment[] {
     const json = localStorage.getItem(this.key);
-    return json ? JSON.parse(json) as GymClass[] : [];
+    return json ? JSON.parse(json) : [];
   }
 
-  addEnrollment(gymClass: GymClass): void {
+  addEnrollment(entry: Enrollment): void {
     const list = this.getEnrollments();
-    if (!list.find(e => e.id === gymClass.id)) {
-      list.push(gymClass);
+    if (!list.find(e => e.id === entry.id && e.userEmail === entry.userEmail)) {
+      list.push(entry);
       localStorage.setItem(this.key, JSON.stringify(list));
     }
   }
 
-  removeEnrollment(id: number): void {
-    const updated = this.getEnrollments().filter(e => e.id !== id);
-    localStorage.setItem(this.key, JSON.stringify(updated));
+  removeEnrollment(index: number): void {
+    const list = this.getEnrollments();
+    list.splice(index, 1);
+    localStorage.setItem(this.key, JSON.stringify(list));
   }
 }
