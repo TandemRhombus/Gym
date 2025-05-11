@@ -2,17 +2,20 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root'
-})
+export interface ApiClass {
+  id: number;
+  name: string;
+  description: string;
+  schedule: string;
+}
+
+@Injectable({ providedIn: 'root' })
 export class ApiService {
-  // Ajusta esta URL en environment.ts si lo usas con un backend real
-  private readonly baseUrl = 'https://api.example.com';
+  private url = '../../assets/api/classes.json';
 
   constructor(private http: HttpClient) {}
 
-  // Ejemplo: obtener datos genéricos desde un endpoint
-  fetch<T>(endpoint: string): Observable<T> {
-    return this.http.get<T>(`${this.baseUrl}/${endpoint}`);
+  getClasses(): Observable<ApiClass[]> {
+    return this.http.get<ApiClass[]>(this.url);
   }
 }

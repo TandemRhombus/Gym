@@ -1,0 +1,110 @@
+[
+  {
+    "id": 1,
+    "name": "Zumba",
+    "description": "Clase de baile aeróbico que combina música latina y cardio",
+    "schedule": "Lunes y Miércoles 18:00–19:00"
+  },
+  {
+    "id": 2,
+    "name": "Pilates",
+    "description": "Ejercicios de bajo impacto enfocándose en el core y la postura",
+    "schedule": "Martes y Jueves 17:00–18:00"
+  },
+  {
+    "id": 3,
+    "name": "CrossFit",
+    "description": "Entrenamiento funcional con pesas, cardio y agilidad",
+    "schedule": "Viernes 16:00–17:30"
+  },
+    {
+    "id": 4,
+    "name": "Spinning (próximamente)",
+    "description": "Entrenamiento en bicicleta estática de alta intensidad",
+    "schedule": "Próximamente"
+  },
+  {
+    "id": 5,
+    "name": "Yoga (próximamente)",
+    "description": "Prácticas de posturas y respiración para mejorar flexibilidad y relajación",
+    "schedule": "Próximamente"
+  },
+  {
+    "id": 6,
+    "name": "Boxeo (próximamente)",
+    "description": "Clases de golpeo y técnica con saco, guantes y trabajo de pies",
+    "schedule": "Próximamente"
+  },
+  {
+    "id": 7,
+    "name": "HIIT (próximamente)",
+    "description": "Entrenamiento de intervalos de alta intensidad",
+    "schedule": "Próximamente"
+  },
+  {
+    "id": 8,
+    "name": "Body Pump (próximamente)",
+    "description": "Rutina grupal con barras y pesas ligeras",
+    "schedule": "Próximamente"
+  },
+  {
+    "id": 9,
+    "name": "Stretching (próximamente)",
+    "description": "Sesión de estiramientos para mejorar movilidad y prevenir lesiones",
+    "schedule": "Próximamente"
+  },
+  {
+    "id": 10,
+    "name": "TRX (próximamente)",
+    "description": "Entrenamiento en suspensión con correas",
+    "schedule": "Próximamente"
+  },
+  {
+    "id": 11,
+    "name": "Kickboxing (próximamente)",
+    "description": "Combinación de patadas y golpes para cardio y defensa personal",
+    "schedule": "Próximamente"
+  },
+  {
+    "id": 12,
+    "name": "Natación (próximamente)",
+    "description": "Entrenamiento acuático para resistencia y técnica",
+    "schedule": "Próximamente"
+  },
+  {
+    "id": 13,
+    "name": "Escalada Indoor (próximamente)",
+    "description": "Práctica de escalada en muro sintético",
+    "schedule": "Próximamente"
+  },
+  {
+    "id": 14,
+    "name": "Kettlebell (próximamente)",
+    "description": "Ejercicios de fuerza y potencia con pesa rusa",
+    "schedule": "Próximamente"
+  },
+  {
+    "id": 15,
+    "name": "Zumba Step (próximamente)",
+    "description": "Variación de Zumba con step para intensidad adicional",
+    "schedule": "Próximamente"
+  },
+  {
+    "id": 16,
+    "name": "Tai Chi (próximamente)",
+    "description": "Arte marcial suave para equilibrio y meditación en movimiento",
+    "schedule": "Próximamente"
+  },
+  {
+    "id": 17,
+    "name": "Bootcamp (próximamente)",
+    "description": "Entrenamiento militarizado de fuerza y resistencia",
+    "schedule": "Próximamente"
+  },
+  {
+    "id": 18,
+    "name": "Piloxing (próximamente)",
+    "description": "Mezcla de Pilates, boxeo y baile para cardio y tonificación",
+    "schedule": "Próximamente"
+  }
+]

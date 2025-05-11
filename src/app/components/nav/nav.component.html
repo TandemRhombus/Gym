@@ -1,11 +1,73 @@
-<nav class="nav-bar">
-    <button mat-button routerLink="/">Home</button>
-    <button mat-button routerLink="/classes">Clases</button>
-    <button mat-button routerLink="/schedule">Horario</button>
-    <button mat-button routerLink="/contact">Contacto</button>
-    <button mat-button routerLink="/team">Equipo</button>
-    @if (auth.isLoggedIn()) {
-      <button mat-button routerLink="/admin">Admin</button>
-    }
-  </nav>
+<!-- src/app/components/nav/nav.component.html -->
+<nav class="nav-bar" [ngClass]="{ 'logged-in': auth.isLoggedIn() }">
+
+  <!-- Enlaces principales -->
+  <button
+    mat-button
+    routerLink="/"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }"
+  >Home</button>
+
+  <button
+    mat-button
+    routerLink="/classes"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }"
+  >Clases</button>
+
+  <button
+    mat-button
+    routerLink="/schedule"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }"
+  >Horario</button>
+
+  <button
+    mat-button
+    routerLink="/contact"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }"
+  >Contacto</button>
+
+  <button
+    mat-button
+    routerLink="/team"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }"
+  >Sobre nosotros</button>
+
+  <button
+    mat-button
+    routerLink="/api-data"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }"
+  >Todas las clases</button>
+
+  <!-- Spacer flexible -->
+  <span class="spacer"></span>
+
+  <!-- Si NO está logueado, mostrar LOGIN -->
+  @if (!auth.isLoggedIn()) {
+    <button
+      mat-button
+      routerLink="/login"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >Iniciar sesión</button>
+  }
   
+  <!-- Si SÍ está logueado, mostrar Admin, nombre y Logout -->
+  @if (auth.isLoggedIn()) {
+    <button
+      mat-button
+      routerLink="/admin"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >Admin</button>
+
+    <span class="user-info">
+      Hola, {{ auth.getCurrentUser()?.fullName }}
+    </span>
+  }
+</nav>

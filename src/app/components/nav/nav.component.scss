@@ -8,7 +8,19 @@
   position: sticky;
   top: 0;
   z-index: 1000;
-  
+
+  .spacer {
+    flex: 1;
+  }
+
+  .user-info {
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.9);
+    margin-left: 1rem;
+  }
+
   button {
     margin: 0 1rem;
     color: rgba(255, 255, 255, 0.8);
@@ -18,7 +30,7 @@
     transition: all 0.3s ease;
     border-radius: 4px;
     overflow: hidden;
-    
+
     &::before {
       content: '';
       position: absolute;
@@ -29,27 +41,36 @@
       background: linear-gradient(to right, #00f2fe, #4facfe);
       transition: width 0.3s ease;
     }
-    
+
     &:hover {
       color: white;
       background-color: rgba(79, 172, 254, 0.1);
-      
+
       &::before {
         width: 100%;
       }
     }
-    
+
     &.active {
       color: #00f2fe;
-      
+
       &::before {
         width: 100%;
         background: #00f2fe;
       }
     }
-    
+
     &:focus {
       outline: none;
+      background-color: rgba(79, 172, 254, 0.2);
+    }
+  }
+
+  .mat-icon-button {
+    margin-left: 0.5rem;
+    color: rgba(255, 255, 255, 0.8);
+
+    &:hover {
       background-color: rgba(79, 172, 254, 0.2);
     }
   }
@@ -72,7 +93,7 @@
         opacity: 0;
         transition: opacity 0.3s ease;
       }
-      
+
       &:not(:last-child):hover::after {
         opacity: 1;
       }
