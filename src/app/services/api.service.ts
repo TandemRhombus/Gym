@@ -11,7 +11,7 @@ export interface ApiClass {
 
 @Injectable({ providedIn: 'root' })
 export class ApiService {
-  private url = '../../assets/api/classes.json';
+  private url = 'assets/api/classes.json';
 
   constructor(private http: HttpClient) {}
 
