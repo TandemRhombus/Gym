@@ -1,11 +1,224 @@
+// api-list.component.scss
+
 .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 1.5rem 0;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
 }
 
 .api-card {
-  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
-  transition: transform 0.2s;
-  &:hover { transform: translateY(-4px); }
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  padding: 1.8rem;
+  border: 1px solid rgba(79, 172, 254, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3),
+              0 0 16px rgba(0, 242, 254, 0.15),
+              inset 0 0 16px rgba(0, 242, 254, 0.05);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+  color: white;
+
+  &:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4),
+                0 0 24px rgba(0, 242, 254, 0.25),
+                inset 0 0 20px rgba(0, 242, 254, 0.1);
+    border-color: #00f2fe;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #00f2fe, #4facfe);
+  }
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.2rem;
+
+    h3 {
+      margin: 0;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: white;
+      letter-spacing: 0.5px;
+    }
+
+    .card-category {
+      background: rgba(0, 242, 254, 0.15);
+      color: #00f2fe;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+  }
+
+  .card-description {
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+  }
+
+  .card-details {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+
+    .detail-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      mat-icon {
+        color: #00f2fe;
+        font-size: 1.2rem;
+        width: 20px;
+        height: 20px;
+      }
+
+      .detail-content {
+        p {
+          margin: 0;
+          font-size: 0.9rem;
+
+          &:first-child {
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 300;
+            margin-bottom: 3px;
+            font-size: 0.8rem;
+          }
+
+          &:last-child {
+            color: white;
+            font-weight: 500;
+          }
+        }
+      }
+    }
+  }
+
+  .card-schedule {
+    background: rgba(79, 172, 254, 0.1);
+    border-radius: 10px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+
+    h4 {
+      color: #4facfe;
+      font-size: 1rem;
+      margin: 0 0 0.8rem 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      mat-icon {
+        font-size: 1.2rem;
+      }
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      li {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        &::before {
+          content: '•';
+          color: #00f2fe;
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }
+
+  .card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1.2rem;
+    border-top: 1px solid rgba(79, 172, 254, 0.2);
+
+    .card-price {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: white;
+
+      span {
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 0.9rem;
+        font-weight: 400;
+      }
+    }
+
+    button {
+      background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+      color: #0f172a;
+      border: none;
+      padding: 8px 20px;
+      border-radius: 30px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 242, 254, 0.3);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 242, 254, 0.4);
+      }
+
+      mat-icon {
+        font-size: 1.1rem;
+        width: 18px;
+        height: 18px;
+      }
+    }
+  }
+}
+
+// Animación de entrada para las tarjetas
+@for $i from 1 through 12 {
+  .api-card:nth-child(#{$i}) {
+    animation: fadeInUp 0.5s ease-out #{$i * 0.1}s both;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
