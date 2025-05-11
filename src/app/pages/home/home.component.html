@@ -1,59 +1,69 @@
-<section class="hero">
-    <div class="hero-content">
-      <h1>Bienvenido a Gym App</h1>
-      <p>Tu plataforma para gestionar clases y horarios de gimnasio de forma fácil y rápida.</p>
-      <button mat-raised-button color="primary" routerLink="/classes">Ver Clases</button>
+<!-- src/app/pages/home/home.component.html -->
+<section
+  class="hero"
+  [ngStyle]="{ 'background-image': heroBackground }"
+>
+  <div class="hero-content">
+    <h1>Bienvenido a Gym App</h1>
+    <p>
+      Tu plataforma para gestionar clases y horarios de gimnasio de forma fácil y
+      rápida.
+    </p>
+    <button mat-raised-button color="primary" routerLink="/classes">
+      Ver Clases
+    </button>
+  </div>
+</section>
+
+<section class="carousel-section">
+  <h2>Si fuera FACIL todos serían BUENOS</h2>
+  <div class="carousel-container">
+    <div class="carousel-slide">
+      <img src="assets/images/img1.jpg" alt="Instalaciones del gimnasio 1" />
+      <img src="assets/images/img2.jpg" alt="Instalaciones del gimnasio 2" />
+      <img src="assets/images/img3.jpg" alt="Instalaciones del gimnasio 3" />
+      <img src="assets/images/img4.jpg" alt="Instalaciones del gimnasio 4" />
     </div>
-  </section>
+    <button class="carousel-btn prev" (click)="prevSlide()">&#10094;</button>
+    <button class="carousel-btn next" (click)="nextSlide()">&#10095;</button>
+  </div>
+</section>
 
-  <section class="carousel-section">
-    <h2>Si fuera FACIL todos serian BUENOS</h2>
-    <div class="carousel-container">
-      <div class="carousel-slide">
-        <img src="assets/images/img1.jpg" alt="Instalaciones del gimnasio 1">
-        <img src="assets/images/img2.jpg" alt="Instalaciones del gimnasio 2">
-        <img src="assets/images/img3.jpg" alt="Instalaciones del gimnasio 3">
-        <img src="assets/images/img4.jpg" alt="Instalaciones del gimnasio 4">
-      </div>
-      <button class="carousel-btn prev" (click)="prevSlide()">&#10094;</button>
-      <button class="carousel-btn next" (click)="nextSlide()">&#10095;</button>
-    </div>
-  </section>
+<section class="video-section">
+  <app-video-player
+    [videoUrl]="'https://www.youtube.com/embed/I_RYujJvZ7s?autoplay=1&mute=1&controls=0'"
+    title="Presentación Gym App"
+  >
+  </app-video-player>
+</section>
 
+<mat-divider></mat-divider>
 
-  <section class="video-section">
-    <app-video-player
-      [videoUrl]="'https://www.youtube.com/embed/I_RYujJvZ7s?autoplay=1&mute=1&controls=0'"
-      title="Presentación Gym App">
-    </app-video-player>
-  </section>  
-  
-  <mat-divider></mat-divider>
-  
-  <section class="features">
-    <h2>Nuestras Categorías</h2>
-    <mat-grid-list cols="3" rowHeight="1:1" gutterSize="16px">
-      @for (feature of features; track feature.name) {
-        <mat-grid-tile>
-          <mat-card>
-            <mat-card-header>
-              <mat-card-title>{{ feature.name }}</mat-card-title>
-            </mat-card-header>
-            <img mat-card-image [src]="feature.image" alt="{{ feature.name }}">
-            <mat-card-content>
-              <p>{{ feature.description }}</p>
-            </mat-card-content>
-          </mat-card>
-        </mat-grid-tile>
-      }
-    </mat-grid-list>
-  </section>
-  
-  <mat-divider></mat-divider>
-  
-  <section class="cta">
-    <h2>Únete Hoy</h2>
-    <p>Regístrate y comienza tu rutina con nosotros.</p>
-    <button mat-stroked-button color="accent" routerLink="/template-form">Registro</button>
-  </section>
-  
+<section class="features">
+  <h2>Nuestras Categorías</h2>
+  <mat-grid-list cols="3" rowHeight="1:1" gutterSize="16px">
+    @for (feature of features; track feature.name) {
+      <mat-grid-tile>
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>{{ feature.name }}</mat-card-title>
+          </mat-card-header>
+          <img mat-card-image [src]="feature.image" alt="{{ feature.name }}" />
+          <mat-card-content>
+            <p>{{ feature.description }}</p>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+    }
+  </mat-grid-list>
+</section>
+
+<mat-divider></mat-divider>
+
+<section class="cta">
+  <h2>Únete Hoy</h2>
+  <p>Regístrate y comienza tu rutina con nosotros.</p>
+  <button mat-stroked-button color="accent" routerLink="/template-form">
+    Registro
+  </button>
+</section>

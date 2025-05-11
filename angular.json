@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/gym",
+            "outputPath": "dist/Gym",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -22,11 +22,11 @@
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets",              
+              "src/assets",
               {
-                "glob": "**/*",              
-                "input": "public/assets",     
-                "output": "assets"            
+                "glob": "**/*",
+                "input": "public/assets",
+                "output": "assets"
               }
             ],
             "styles": [
@@ -35,7 +35,12 @@
             ],
             "scripts": [
               "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
-            ]
+            ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src"
+              ]
+            }
           },
           "configurations": {
             "production": {
@@ -51,7 +56,8 @@
                   "maximumError": "8kB"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "baseHref": "/Gym/"
             },
             "development": {
               "optimization": false,
