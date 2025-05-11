@@ -35,7 +35,7 @@ export class TeamComponent {
     },
     { 
       name: 'Ivan Favela Ruvalcaba', 
-      role: 'UI/UX Designer', 
+      role: 'Frontend Developer', 
       photo: 'assets/images/ivan.jpeg',
       social: {
         facebook: '#',
